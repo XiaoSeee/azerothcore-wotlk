@@ -1,0 +1,16 @@
+[worldserver]
+
+# 开启mode
+SeeLogin.Enable = 1
+
+# 是否给与武器技能
+SeeLogin.Weapon.Max = 1
+
+# 除开DK的初始等级
+SeeLogin.Level = 58
+
+# 是否给与一套T0
+SeeLogin.T0 = 1
+
+# 自动获取相应的技能
+SeeLogin.Auto.Spell = 1
