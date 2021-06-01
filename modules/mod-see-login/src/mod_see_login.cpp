@@ -430,7 +430,7 @@ public:
                     continue;
                 if (spellInfo->SpellFamilyName != family)
                     continue;
-                if ((spellInfo->AttributesEx7 & SPELL_ATTR7_ALLIANCE_ONLY && player->GetTeamId() != TEAM_ALLIANCE) || (spellInfo->AttributesEx7 & SPELL_ATTR7_HORDE_ONLY && player->GetTeamId() != TEAM_HORDE))
+                if ((spellInfo->AttributesEx7 & SPELL_ATTR7_ALLIANCE_SPECIFIC_SPELL && player->GetTeamId() != TEAM_ALLIANCE) || (spellInfo->AttributesEx7 & SPELL_ATTR7_HORDE_SPECIFIC_SPELL && player->GetTeamId() != TEAM_HORDE))
                     continue;
                 if (spellInfo->PowerType == POWER_FOCUS)
                     continue;
@@ -445,7 +445,7 @@ public:
 
                 SkillLineAbilityMapBounds bounds = sSpellMgr->GetSkillLineAbilityMapBounds(spellInfo->Id);
 
-                for (SkillLineAbilityMap::const_iterator itr = bounds.first; itr != bounds.second; ++itr)
+                for (auto itr = bounds.first; itr != bounds.second; ++itr)
                 {
                     if (itr->second->spellId == spellInfo->Id && itr->second->racemask == 0 && itr->second->learnOnGetSkill == 0)
                     {
@@ -478,7 +478,7 @@ public:
             auto spellsForPlayersFamily = spellsMap.find(playerSpellFamily);
             if (spellsForPlayersFamily != spellsMap.end())
             {
-                vector<AddSpell> additionalSpellsToTeach = spellsForPlayersFamily->second;
+                std::vector<AddSpell> additionalSpellsToTeach = spellsForPlayersFamily->second;
                 for (auto const& spell : additionalSpellsToTeach)
                 {
                     if (!(player->HasSpell(spell.spellId)) && (spell.faction == TeamId::TEAM_NEUTRAL || spell.faction == player->GetTeamId()))
@@ -683,8 +683,7 @@ private:
 
     bool IsIgnoredSpell(uint32 spellID)
     {
-        auto spellIt = m_ignoreSpells.find(spellID);
-        return spellIt != m_ignoreSpells.end();
+        return m_ignoreSpells.find(spellID) != m_ignoreSpells.end();
     }
 };
 
