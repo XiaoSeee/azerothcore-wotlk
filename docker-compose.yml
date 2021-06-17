@@ -91,7 +91,7 @@ services:
     restart: unless-stopped
     env_file:
         ${DOCKER_AC_ENV_FILE:-conf/dist/env.ac}
-    user: ${DOCKER_USER:-acore}
+    #user: ${DOCKER_USER:-acore}
     privileged: true
     build:
       context: .
@@ -116,7 +116,7 @@ services:
     restart: unless-stopped
     env_file:
         ${DOCKER_AC_ENV_FILE:-conf/dist/env.ac}
-    user: ${DOCKER_USER:-acore}
+    #user: ${DOCKER_USER:-acore}
     build:
       context: .
       target: authserver-local

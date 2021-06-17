@@ -56,7 +56,7 @@ RUN chown -R $DOCKER_USER:$DOCKER_USER /run
 RUN chown -R $DOCKER_USER:$DOCKER_USER /opt
 RUN chown -R $DOCKER_USER:$DOCKER_USER /azerothcore
 
-USER $DOCKER_USER
+# USER $DOCKER_USER
 
 # copy everything so we can work directly within the container
 # using tools such as vscode dev-container
@@ -130,7 +130,7 @@ RUN chown -R $DOCKER_USER:$DOCKER_USER /opt
 
 RUN chown $DOCKER_USER:$DOCKER_USER /azerothcore
 
-USER $DOCKER_USER
+# USER $DOCKER_USER
 
 # must be created to avoid permissions errors
 RUN mkdir -p /azerothcore/env/dist/data
@@ -257,7 +257,7 @@ RUN --mount=type=bind,target=/azerothcore-temp,readwrite /azerothcore-temp/acore
 
 RUN apt-get remove --purge -y tzdata curl unzip && apt-get autoremove -y
 
-USER $DOCKER_USER
+# USER $DOCKER_USER
 
 #================================================================
 #
@@ -293,7 +293,7 @@ RUN addgroup --gid $GROUP_ID acore && \
 RUN mkdir -p /azerothcore/env/client/
 RUN chown -R $DOCKER_USER:$DOCKER_USER /azerothcore
 
-USER $DOCKER_USER
+# USER $DOCKER_USER
 
 WORKDIR /azerothcore/env/client/
 
