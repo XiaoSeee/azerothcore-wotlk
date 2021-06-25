@@ -76,9 +76,6 @@ public:
                 // 设置初始等级
                 player->GiveLevel(SeeLoginLevel);
 
-                // 急救等级设置到 300
-                player->UpdateSkill(SKILL_FIRST_AID, 300);
-
                 // 自动获取相应的技能
                 if (SeeLoginAutoSpell)
                 {
@@ -428,6 +425,9 @@ public:
 
     // 急救
     void LearnFirstAid(Player* player) {
+        player->learnSpell(3273);//初级急救
+        player->learnSpell(3274);//中级急救
+        player->learnSpell(7924);//高级急救
         player->learnSpell(10846);//大师级急救
         player->learnSpell(3275);//亚麻绷带
         player->learnSpell(3275);//厚亚麻绷带
@@ -441,6 +441,8 @@ public:
         player->learnSpell(18629);//符文布绷带
         player->learnSpell(18630);//厚符文布绷带
 
+        // 急救等级设置到 300
+        player->UpdateSkill(SKILL_FIRST_AID, 300);
     }
 
     // 自动获取相应的技能
