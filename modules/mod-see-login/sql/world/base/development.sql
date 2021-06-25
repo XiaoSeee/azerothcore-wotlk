@@ -69,24 +69,6 @@ INSERT INTO `playercreateinfo` VALUES
 (11,7,0,12,-9095.23,410.466,92.2422,0.687223),
 (11,8,0,12,-9095.23,410.466,92.2422,0.687223);
 
--- 初始中级骑术
-UPDATE `playercreateinfo_spell` SET `classmask` = 0 WHERE `Spell` IN (33388,33391);
-
--- 坐骑
-DELETE FROM `playercreateinfo_spell` WHERE `Spell` IN (23228, 23251, 23240, 23221, 23246, 23247, 23223, 23241, 33660, 35714);
-INSERT INTO `playercreateinfo_spell` VALUES
-(1, 1535, 23228, '马'),
-(2, 1535, 23251, '狼'),
-(4, 1535, 23240, '羊'),
-(8, 1535, 23221, '豹子'),
-(16, 1535, 23246, '亡灵马'),
-(32, 1535, 23247, '科多'),
-(64, 1535, 23223, '机械鸟'),
-(128, 1535, 23241, '龙'),
-(512, 1535, 33660, '陆行鸟'),
-(1024, 1535, 35714, '大象');
-
-
 -- 死亡纹路背包4个
 DELETE FROM `playercreateinfo_item` WHERE `itemid` = 38145;
 INSERT INTO `playercreateinfo_item` VALUES
@@ -108,25 +90,3 @@ INSERT INTO `playercreateinfo_item` VALUES
 (0, 7, 5176, 1, NULL),
 (0, 7, 5177, 1, NULL),
 (0, 7, 5178, 1, NULL);
-
--- 急救
-DELETE FROM `playercreateinfo_spell` WHERE `Spell` IN (10846, 3275, 3276, 3277, 3278, 7928, 7929, 7934, 10840, 10841, 18629, 18630);
-INSERT INTO `playercreateinfo_spell` VALUES
-(0, 0, 10846, '大师级急救'),
-(0, 0, 3275, '亚麻绷带'),
-(0, 0, 3276, '厚亚麻绷带'),
-(0, 0, 3277, '绒线绷带'),
-(0, 0, 3278, '厚绒线绷带'),
-(0, 0, 7928, '丝质绷带'),
-(0, 0, 7929, '厚丝质绷带'),
-(0, 0, 7934, '抗毒药剂'),
-(0, 0, 10840, '魔纹绷带'),
-(0, 0, 10841, '厚魔纹绷带'),
-(0, 0, 18629, '符文布绷带'),
-(0, 0, 18630, '厚符文布绷带');
-
--- 锁甲板甲
-DELETE FROM `playercreateinfo_spell` WHERE `Spell` IN (8737, 750);
-INSERT INTO `playercreateinfo_spell` VALUES
-(0, 103, 8737, '锁甲'),
-(0, 35, 750, '板甲');

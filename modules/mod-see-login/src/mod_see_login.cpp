@@ -30,7 +30,9 @@ enum WeaponProficiencies
     TWO_H_MACES = 199,
     TWO_H_SWORDS = 202,
     WANDS = 5009,
-    THROW_WAR = 2567
+    THROW_WAR = 2567,
+    MAIL = 8737,//锁甲
+    PLATE_MAIL = 750//板甲
 };
 
 
@@ -107,7 +109,10 @@ public:
             }
 
             // 初始中级骑术并给一个坐骑
-            //LearnRiding(player);
+            LearnRiding(player);
+
+            // 急救
+            LearnFirstAid(player);
         }
     }
 
@@ -141,6 +146,8 @@ public:
             player->learnSpell(CROSSBOWS);
             player->learnSpell(BOWS);
             player->learnSpell(BLOCK);
+            player->learnSpell(MAIL);
+            player->learnSpell(PLATE_MAIL);
             break;
         case CLASS_PRIEST:
             player->learnSpell(WANDS);
@@ -158,6 +165,8 @@ public:
             player->learnSpell(ONE_H_MACES);
             player->learnSpell(ONE_H_AXES);
             player->learnSpell(BLOCK);
+            player->learnSpell(MAIL);
+            player->learnSpell(PLATE_MAIL);
             break;
         case CLASS_ROGUE:
             player->learnSpell(ONE_H_SWORDS);
@@ -177,6 +186,8 @@ public:
             player->learnSpell(ONE_H_SWORDS);
             player->learnSpell(ONE_H_MACES);
             player->learnSpell(ONE_H_AXES);
+            player->learnSpell(MAIL);
+            player->learnSpell(PLATE_MAIL);
             break;
         case CLASS_MAGE:
             player->learnSpell(WANDS);
@@ -194,6 +205,7 @@ public:
             player->learnSpell(FIST_WEAPONS);
             player->learnSpell(DAGGERS);
             player->learnSpell(BLOCK);
+            player->learnSpell(PLATE_MAIL);
             break;
         case CLASS_HUNTER:
             player->learnSpell(THROW_WAR);
@@ -208,6 +220,7 @@ public:
             player->learnSpell(DAGGERS);
             player->learnSpell(CROSSBOWS);
             player->learnSpell(BOWS);
+            player->learnSpell(PLATE_MAIL);
             break;
         case CLASS_DRUID:
             player->learnSpell(TWO_H_MACES);
@@ -380,37 +393,54 @@ public:
         switch (player->getRace())
         {
         case RACE_HUMAN:
-            player->AddItem(18778, 1);
+            player->learnSpell(23228);//马
             break;
         case RACE_ORC:
-            player->AddItem(18797, 1);
+            player->learnSpell(23251);//狼
             break;
         case RACE_DWARF:
-            player->AddItem(18785, 1);
+            player->learnSpell(23240);//羊
             break;
         case RACE_NIGHTELF:
-            player->AddItem(18766, 1);
+            player->learnSpell(23221);//23221
             break;
         case RACE_UNDEAD_PLAYER:
-            player->AddItem(18791, 1);
+            player->learnSpell(23246);//亡灵马
             break;
         case RACE_TAUREN:
-            player->AddItem(18793, 1);
+            player->learnSpell(23247);//科多
             break;
         case RACE_GNOME:
-            player->AddItem(18773, 1);
+            player->learnSpell(23223);//机械鸟
             break;
         case RACE_TROLL:
-            player->AddItem(18788, 1);
+            player->learnSpell(23241);//龙
             break;
         case RACE_BLOODELF:
-            player->AddItem(28936, 1);
+            player->learnSpell(33660);//陆行鸟
             break;
         case RACE_DRAENEI:
-            player->AddItem(29747, 1);
+            player->learnSpell(35714);//大象
             break;
         default:break;
         }
+    }
+
+    // 急救
+    void LearnFirstAid(Player* player) {
+        player->learnSpell(10846);//大师级急救
+        player->learnSpell(3275);//亚麻绷带
+        player->learnSpell(3275);//厚亚麻绷带
+        player->learnSpell(3277);//绒线绷带
+        player->learnSpell(3278);//厚绒线绷带
+        player->learnSpell(3278);//丝质绷带
+        player->learnSpell(7929);//厚丝质绷带
+        player->learnSpell(7934);//抗毒药剂
+        player->learnSpell(10840);//魔纹绷带
+        player->learnSpell(10841);//厚魔纹绷带
+        player->learnSpell(18629);//符文布绷带
+        player->learnSpell(18630);//厚符文布绷带
+
     }
 
     // 自动获取相应的技能
